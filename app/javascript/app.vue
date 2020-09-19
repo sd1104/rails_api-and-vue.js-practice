@@ -21,7 +21,7 @@
       { path: '/employees/:id(\\d+)',
         name: 'EmployeeDetailPage',
         component: EmployeeDetailPage },
-      { path: '/employees/',
+      { path: '/employees/new',
         name: 'EmployeeNewPage',
         component: EmployeeNewPage }
     ]
