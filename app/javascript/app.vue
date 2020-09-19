@@ -1,57 +1,38 @@
 <template>
   <div class="container">
-    <div id="app">
-      <table>
-        <tbody>
-          <tr>
-            <th>ID</th>
-            <th>name</th>
-            <!-- <th>birth</th> -->
-            <th>department</th>
-            <th>gender</th>
-            <!-- <th>joined_date</th>
-            <th>payment</th>
-            <th>note</th> -->
-          </tr>
-          <tr v-for="e in employees" :key="e.id">
-            <td>{{ e.id }}</td>
-            <td>{{ e.name }}</td>
-            <!-- <td>{{ e.birth }}</td> -->
-            <td>{{ e.department }}</td>
-            <td>{{ e.gender }}</td>
-            <!-- <td>{{ e.joined_date }}</td>
-            <td>{{ e.payment }}</td>
-            <td>{{ e.note }}</td> -->
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
 
+    <router-view></router-view>
+
+  </div>
 </template>
 
 <script>
+  import Vue from 'vue'
+  import VueRouter from 'vue-router'
 
-import axios from 'axios';
-export default {
-  data: function () {
-    return {
-      employees: []
-    }
-  },
-  mounted () {
-    axios
-      .get('/api/v1/employees.json')
-      .then(response => (this.employees = response.data))
+  import EmployeeIndexPage from 'EmployeeIndexPage.vue'
+  import EmployeeDetailPage from 'EmployeeDetailPage.vue'
+  import EmployeeNewPage from 'EmployeeNewPage.vue'
+
+  const router = new VueRouter({
+    routes: [
+      { path: '/',
+        component: EmployeeIndexPage },
+      { path: '/employees/:id(\\d+)',
+        name: 'EmployeeDetailPage',
+        component: EmployeeDetailPage },
+      { path: '/employees/new',
+        name: 'EmployeeNewPage',
+        component: EmployeeNewPage }
+    ]
+  })
+
+  Vue.use(VueRouter)
+
+  export default {
+    router
   }
-}
 </script>
 
-
-
 <style scoped>
-p {
-  font-size: 2em;
-  text-align: center;
-}
 </style>
