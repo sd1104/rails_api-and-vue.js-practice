@@ -1,11 +1,11 @@
 class Api::V1::EmployeesController < ApplicationController
   before_action :set_employee, only: :show
 
-rescue_from ActiveRecord::RecordnotFound do |exception|
+rescue_from ActiveRecord::RecordNotFound do |exception|
   render json: { error: '404 not found' }, status: 404
 end
 
-  def inex
+  def index
     employees = Employee.all
     render json: employees
   end
