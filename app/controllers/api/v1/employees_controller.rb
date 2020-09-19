@@ -1,9 +1,10 @@
 class Api::V1::EmployeesController < ApplicationController
+  protect_from_forgery
   before_action :set_employee, only: :show
 
-rescue_from Exception, with: :render_status_500
+  rescue_from Exception, with: :render_status_500
 
-rescue_from ActiveRecord::RecordNotFound, with: :render_status_404
+  rescue_from ActiveRecord::RecordNotFound, with: :render_status_404
 
   def index
     employees = Employee.select(:id, :name, :department, :gender)

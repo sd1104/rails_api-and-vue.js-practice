@@ -1,5 +1,7 @@
 <template>
   <div class="container">
+    <h4>New Commit</h4>
+    <hr>
     <form @submit.prevent="createEmployee">
       <div v-if="errors.length != 0">
         <ul v-for="e in errors" :key="e">
@@ -7,37 +9,45 @@
         </ul>
       </div>
       <div>
-        <label>Name</label>
-        <input v-model="employee.name" type="text">
+        <label class="form-group">Name</label>
+        <input class="form-control" v-model="employee.name" type="text">
       </div>
+      <br>
       <div>
-        <label>Department</label>
-        <input v-model="employee.department" type="text">
+        <label class="form-group">Department</label>
+        <input class="form-control" v-model="employee.department" type="text">
       </div>
+      <br>
       <div>
-        <label>Gender</label>
-        <select v-model="employee.gender">
+        <label class="form-group">Gender</label>
+        <select class="form-control" v-model="employee.gender">
           <option>other</option>
           <option>male</option>
           <option>female</option>
         </select>
-        </div>
-      <div>
-        <label>Birth</label>
-        <input v-model="employee.birth" type="date">
       </div>
+      <br>
       <div>
-        <label>Joined Date</label>
-        <input v-model="employee.joined_date" type="date">
+        <label class="form-group">Birth</label>
+        <input class="form-control" v-model="employee.birth" type="date">
       </div>
+      <br>
       <div>
-        <label>Payment</label>
-        <input v-model="employee.payment" type="number" min="0">
+        <label class="form-group">Joined Date</label>
+        <input class="form-control" v-model="employee.joined_date" type="date">
       </div>
+      <br>
       <div>
-        <label>Note</label>
-        <input v-model="employee.note" type="text">
+        <label class="form-group">Payment</label>
+        <input class="form-control" v-model="employee.payment" type="number" min="0">
       </div>
+      <br>
+      <div>
+        <label class="form-group">Note</label>
+        <input class="form-control" v-model="employee.note" type="text">
+      </div>
+      <br>
+      <br>
       <button type="submit" class="btn btn-secondary">
         Commit
       </button>
