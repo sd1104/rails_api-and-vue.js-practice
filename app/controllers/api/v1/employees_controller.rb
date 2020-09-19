@@ -6,7 +6,7 @@ rescue_from ActiveRecord::RecordNotFound do |exception|
 end
 
   def index
-    employees = Employee.all
+    employees = Employee.select(:id, :name, :department, :gender)
     render json: employees
   end
 
