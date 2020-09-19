@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
+  root to: 'home#index'
   namespace :api do
     namespace :v1 do
-      get 'employees/inex'
-      get 'employees/show'
+      resources :employees, only: [:index, :show]
     end
   end
   ActiveAdmin.routes(self)
